@@ -3,7 +3,7 @@ layout: post
 title:  "Maximum Log Likelihood vs Maximum Aposterior"
 date:   2019-09-26 01:59:45 -0400
 categories: jekyll update
-permalink: "/posts/1"
+permalink: /posts/1
 ---
 
 
