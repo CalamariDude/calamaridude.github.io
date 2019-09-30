@@ -1,12 +1,9 @@
 ---
 layout: post
 title:  "Maximum Log Likelihood vs Maximum Aposterior"
-date:   2019-09-26 01:59:45 -0400
-categories: jekyll update
-permalink: /posts/1
+date:   2019-09-29 21:22:18 -0400
+categories: ML
 ---
-
-
 # Maximum Log Likelihood vs Maximum Aposterior
 
 If you're like me, this whole maximum log likihood vs baysian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn't quite understand what the fuss was about. Why are we using "Log" and "Likelihood" and why does "Aposterior" sound so foreign. I've made a short blog post to help those out that, like me, didn't quite get it the first time.
