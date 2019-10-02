@@ -101,6 +101,7 @@ $$\frac{d}{d\theta}\log(P(X|\theta)) = \frac{1}{\sigma^2}(\sum{}x_i-n\theta)$$
 Now we just have to take the derivative of the second term.
 
 $$\frac{d}{d\theta}\log(P(\theta))$$
+
 In order to differentiate this we need to define it:
 
 $$P(\theta) = \frac{1}{\sqrt(2\pi\sigma^2)}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$$
