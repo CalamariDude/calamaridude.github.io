@@ -115,6 +115,7 @@ $$= \theta-\mu$$
 So now putting these together, we have 
 
 $$\frac{d}{d\theta}(\log(P(X|\theta)) + \log(P(\theta)))= 0$$ 
+
 $$\Rightarrow 0 = \frac{1}{\sigma^2}(\sum{}x_i-n\theta) + \mu + \theta$$
 
 We rearrange this to get:
