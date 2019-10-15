@@ -3,9 +3,8 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+title: Home
 ---
-
-# Hello.
 
 This is personal website and blog where I post guides from things ranging from life lessons to machine learning concepts that were initially hard for me to understand. 
 <br><br>
