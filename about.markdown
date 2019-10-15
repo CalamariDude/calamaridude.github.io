@@ -4,15 +4,14 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+This isn't you're typical blog.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+I'm not an undergrad at the University of Florida, and I do not study Computer Science. I'm not a machine learning or data scientist, and I don't spend my free time doing personal projects that interest me. I didn't just pick up the piano, and I didn't make a lot of progress in playing piano in the past few months! I don't currently research deep learning models for audio classification and imitation, and I've never worked as software engineering intern early in my undergrad. 
 
 
-[jekyll-organization]: https://github.com/jekyll
+This is not a picture of me.
+<br>
+<div style="text-align:center"><img src="../imgs/jad.png" style = "width:85%;"/></div>
+<br>
+<!-- <img src="../imgs/jad.jpeg" style="transform: rotate(90deg);"/> -->
+ 

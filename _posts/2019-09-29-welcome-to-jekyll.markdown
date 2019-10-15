@@ -4,7 +4,7 @@ title:  "Maximum Log Likelihood vs Maximum Aposterior"
 date:   2019-09-29 21:22:18 -0400
 categories: ML learning bayesian
 ---
-# Maximum Log Likelihood vs Maximum Aposterior
+# Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)
 
 If you're like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn't quite understand what the fuss was about. Why are we using "Log" and "Likelihood" and why does "Aposterior" sound so foreign. I've made a short blog post to help those out that, like me, didn't quite get it the first time.
 
@@ -43,7 +43,7 @@ Okay so $$P(X ⎮ \theta)$$, what does it mean:
 
 $$P(X|\theta) =P(x_1,\dots,x_n | \theta) = \prod_{i=1}^nP(x_i = x_i | \theta)$$
 
-This is saying we need to pick parameters $$\theta$$ that maximizes the probability that each data point came from the probability distribution we are estimating the data points to come from. In our coin flip example, this means we need to pick a value that we can say, for a Bernoulli case of 10 coin flips where 6 outcomes are heads, what would be the average value we expect the next coin flip to be based on the previous 10 flips. This value works out to .6, and here's how we determine that:
+Putting it together, this is saying we need to pick parameters $$\theta$$ that maximizes the probability that each data point came from the probability distribution we are estimating the data points to come from. In our coin flip example, this means we need to pick a value that we can say, for a Bernoulli case of 10 coin flips where 6 outcomes are heads, what would be the average value we expect the next coin flip to be based on the previous 10 flips. This value works out to .6, and here's how we determine that:
 
 Assume the coin flips $$X$$ comes from a normal distribution, $$X \sim N(\mu, \sigma^2)$$, so that means 
 
@@ -55,18 +55,18 @@ So essentially we want to maximize this probability term for every X by choosing
 
 $$\log(P(X|\theta)) = -\frac{n}{2}\log(2\pi\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2$$
 
-Please refer to the [Log Rules][Rule] for how we got to this. Its also important to note that we can use log because log(x) is a *monotonically* increasing function and maximizing $$P(X)$$ is the *same* as maxmizing $$\log(P(X))$$. Now once we have this, we are ready to differentiate and set equal to 0 in order to find our [critical points][Critical]:
+Please refer to the [Log Rules][Rule] for how we got to this. Its also important to note that we can use log because log(x) is a *monotonically* increasing function and maximizing $$P(X)$$ is the *same* as maximizing $$\log(P(X))$$. Now once we have this, we are ready to differentiate and set equal to 0 in order to find our [critical points][Critical]:
 
 $$0 = \frac{d}{d\theta}\log(P(X|\theta) = \frac{1}{2\sigma^2}\sum2(x_i-\theta) = \frac{1}{\sigma^2}(\sum{}x_i-n\theta) = 0$$
 
 
 $$\Rightarrow\frac{1}{n}\sum_{i=1}^nx_i = \theta_{MLE} = \bar{x}$$
 
-That's crazy how this all simplifies down to $$\theta_{MLE} = \bar{x}$$, which means maximimizing our liklihood is just choosing the sample mean. BLows your MIND right? 
+That's crazy how this all simplifies down to $$\theta_{MLE} = \bar{x}$$, which means maximizing our elihood is just choosing the sample mean. BLows your MIND right? 
 
 OK. Maybe not, but if that doesn't the MAP math will.
 
-**Aside**: Now sometimes people will call the liklihood as the log liklihood, thats just because we maximize that instead, but its really doing the same thing, so most people use the liklihood and log liklihood synonymously.
+**Aside**: Now sometimes people will call the likelihood as the log likelihood, thats just because we maximize that instead, but its really doing the same thing, so most people use the likelihood and log likelihood synonymously.
 
 ### Maximium Aposterior
 
@@ -74,7 +74,7 @@ Now up until this point, we were pretty vague about what a prior meant, but let'
 
 $$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$
 
-The top term is basically the maximim liklihood times a prior, this is the fundamental difference between the two, and you will see why this makes a difference as we work through the equations. So let's first define the the Maximum Aposterior.
+The top term is basically the maximim likelihood times a prior, this is the fundamental difference between the two, and you will see why this makes a difference as we work through the equations. So let's first define the the Maximum Aposterior.
 
 $$\theta_{MAP} = \max_{\theta \epsilon \Theta}P(\theta | X)$$
 
@@ -126,10 +126,10 @@ $$\Rightarrow\theta_{MAP} = \frac{n}{n+\sigma^2}\bar{x} + \frac{\sigma^2}{n+\sig
 
 I skipped some algebra, so go back and work out the last few steps yourself. But I wanted to get to the intuintion behind this result. 
 
-As you can see, the left side of this equaition is the sample mean, and the right side is the prior mean. When the n is small, or you only flip the coin a few times, the term on the right will dominate more. However, as $$n\rightarrow\infty$$, the value of $$\theta_{MAP}$$ is mainly composed of the left term, as the right term goes to 0. Meaning, when we flip the coin a lot, and it keeps landing 6/10 times heads, we stop believing it was a fair sided NFL coin and more like a rigged unfrair coin. So as $$n\rightarrow\infty$$, MAP looks a lot like $$\bar{x}$$, which is the MLE.
+As you can see, the left side of this equaition is the sample mean, and the right side is the prior mean. When the n is small, or you only flip the coin a few times, the term on the right will dominate more. However, as $$n\rightarrow\infty$$, the value of $$\theta_{MAP}$$ is mainly composed of the left term, as the right term goes to 0. Meaning, when we flip the coin a lot, and it keeps landing 6/10 times heads, we stop believing it was a fair sided NFL coin and more like a rigged unfair coin. So as $$n\rightarrow\infty$$, MAP looks a lot like $$\bar{x}$$, which is the MLE.
 
 ## Conclusion
-Whether you use MLE or MAP is up to you, if you think you the data is what you should base your estimates on and nothing else, MLE is the way to go. If you think you know something that will help the problem, especially if there isn't enough data or the data isn't that good, you might want to use Bayesian model like MAP.
+Whether you use MLE or MAP is up to you, if you think you the data is what you should base your estimates on and nothing else, MLE is the way to go. If you think you know something that will help the problem, especially if there isn't enough data or the data isn't that good, you might want to use a Bayesian model like MAP.
 
 [Bayes]: https://en.wikipedia.org/wiki/Bayes%27_theorem
 [LLN]: https://en.wikipedia.org/wiki/Law_of_large_numbers
