@@ -21,7 +21,7 @@
 title: Jad's website
 email: zeineddine DOT jad AT gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This website was made using Jekyll, not because I don't know web-dev, but because I don't believe in overkill :)
+  I made this website with Jekyll :)
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://jadz.me" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jadoziee
@@ -37,6 +37,11 @@ markdown: kramdown
 kramdown:
    math_engine: mathjax
 
+collections:
+  projects:
+    output: true
+
+# include: ['_projects']
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

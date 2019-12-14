@@ -4,6 +4,7 @@
 
 layout: home
 title: Home
+order: 0
 ---
 
 This is personal website and blog where I post guides from things ranging from life lessons to machine learning concepts that were initially hard for me to understand. 

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <br>
+
+  <div class="projects">
+      {%- assign projects = site.projects | sort: "order" -%}
+      {%- for project in projects -%}
+      <h2><a class="page-link2" href="{{ project.giturl }}">{{ project.title | escape }}</a></h2>
+      <p>{{ project.content | markdownify }}</p>
+      <img class = "project-image" src="{{project.image}}"></img>
+      <br><br>
+      <br><br>
+    {%- endfor -%}
+  </div>
+
+</article>
