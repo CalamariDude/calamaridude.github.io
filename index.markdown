@@ -6,7 +6,7 @@ layout: home
 title: Home
 order: 0
 ---
-<h1>This blog is curretnly under reconstruction! *Projects and posts may be missing*</h1>
+<h1>This blog is currently under reconstruction! *Projects and posts may be missing*</h1>
 This is personal website and blog where I post guides from things ranging from life lessons to machine learning concepts that were initially hard for me to understand. 
 <br><br>
 Feel free to checkout out my posts and the about section. 
