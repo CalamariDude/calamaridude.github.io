@@ -19,7 +19,7 @@ Maximum Aposterior (MAP) takes a bayesian approach to this (aka using prior know
 
 ## Math time
 ### Maximum Likelihood Estimator
-Now from the coin flip example, it seems like the way you determine the maximum liklihood is just by getting the simple probability. This just so happens to be the case when we are getting the maximum liklihood of a Univeriate <em>Gaussian Distribution</em>. The maximum liklihood of a some data tries to estimate the true parameters of the population that the data came from. In our instance, we assume outcomes of the coin flip correspond to sum <em>normal</em> distribution. With this assumption, we will work out why the MLE of a coin flip data is just the mean of our data. 
+Now from the coin flip example, it seems like the way you determine the maximum liklihood is just by getting the simple probability. This just so happens to be the case when we are getting the maximum liklihood of a Univariate <em>Gaussian Distribution</em>. The maximum liklihood of a some data tries to estimate the true parameters of the population that the data came from. In our instance, we assume outcomes of the coin flip correspond to sum <em>normal</em> distribution. With this assumption, we will work out why the MLE of a coin flip data is just the mean of our data. 
 <br><br>
 With our coin example, we will first make it more formal:
 
@@ -62,7 +62,7 @@ $$0 = \frac{d}{d\theta}\log(P(X|\theta) = \frac{1}{2\sigma^2}\sum2(x_i-\theta) =
 
 $$\Rightarrow\frac{1}{n}\sum_{i=1}^nx_i = \theta_{MLE} = \bar{x}$$
 
-That's crazy how this all simplifies down to $$\theta_{MLE} = \bar{x}$$, which means maximizing our elihood is just choosing the sample mean. BLows your MIND right? 
+That's crazy how this all simplifies down to $$\theta_{MLE} = \bar{x}$$, which means maximizing our likelihood is just choosing the sample mean. BLows your MIND right? 
 
 OK. Maybe not, but if that doesn't the MAP math will.
 
@@ -124,9 +124,9 @@ $$\Rightarrow \sum_{i=1}^n\frac{x_i}{\sigma^2} + \mu = \theta(\frac{n}{\sigma^2}
 
 $$\Rightarrow\theta_{MAP} = \frac{n}{n+\sigma^2}\bar{x} + \frac{\sigma^2}{n+\sigma^2}\mu$$
 
-I skipped some algebra, so go back and work out the last few steps yourself. But I wanted to get to the intuintion behind this result. 
+I skipped some algebra, so go back and work out the last few steps yourself. But I wanted to get to the intuition behind this result. 
 
-As you can see, the left side of this equaition is the sample mean, and the right side is the prior mean. When the n is small, or you only flip the coin a few times, the term on the right will dominate more. However, as $$n\rightarrow\infty$$, the value of $$\theta_{MAP}$$ is mainly composed of the left term, as the right term goes to 0. Meaning, when we flip the coin a lot, and it keeps landing 6/10 times heads, we stop believing it was a fair sided NFL coin and more like a rigged unfair coin. So as $$n\rightarrow\infty$$, MAP looks a lot like $$\bar{x}$$, which is the MLE.
+As you can see, the left side of this equation is the sample mean, and the right side is the prior mean. When the n is small, or you only flip the coin a few times, the term on the right will dominate more. However, as $$n\rightarrow\infty$$, the value of $$\theta_{MAP}$$ is mainly composed of the left term, as the right term goes to 0. Meaning, when we flip the coin a lot, and it keeps landing 6/10 times heads, we stop believing it was a fair sided NFL coin and more like a rigged unfair coin. So as $$n\rightarrow\infty$$, MAP looks a lot like $$\bar{x}$$, which is the MLE.
 
 ## Conclusion
 Whether you use MLE or MAP is up to you, if you think you the data is what you should base your estimates on and nothing else, MLE is the way to go. If you think you know something that will help the problem, especially if there isn't enough data or the data isn't that good, you might want to use a Bayesian model like MAP.
