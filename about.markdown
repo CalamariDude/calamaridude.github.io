@@ -16,3 +16,19 @@ This is not a picture of me.
 <br>
 <!-- <img src="../imgs/jad.jpeg" style="transform: rotate(90deg);"/> -->
  
+
+
+## Interests
+* Signal processing and classification
+* Audio generation
+* Building products
+* Learning the piano
+* Learning about economics
+* Mechanical Keyboards
+* Soccer
+
+
+
+## Current projects
+* AI powered squatting app
+* AI powered text-banking app for political campaigns
