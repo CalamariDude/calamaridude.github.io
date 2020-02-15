@@ -25,4 +25,4 @@ Which follows the Gaussian distribution.
 
 So the whole idea behind sparse representation is that you have a "dictionary" which is overcomplete, meaning that is has more vectors than dimensions and the vectors obviously form a basis for the dimensions. We can use small number of combinations of "words" in this dictionary to form new words. The reason we call this representation sparse is then because we only need to know about a few words to construct a new word, meaning less information has to be sent about the new word.
 
-In order to then build the Gabor dictionary, we use an abundant combination of $$/mu$$'s and $$\sigma$$'s to represent the signal. So if the signal we are trying to represent is 10 samples long, we may use a dictionary of length 500, each sample with a unique, equally distributed $$\mu$$ and $$\sigma$$.
+In order to then build the Gabor dictionary, we use an abundant combination of $$\mu$$'s and $$\sigma$$'s to represent the signal. So if the signal we are trying to represent is 10 samples long, we may use a dictionary of length 500, each sample with a unique, equally distributed $$\mu$$ and $$\sigma$$.
