@@ -6,7 +6,7 @@ layout: home
 title: Home
 order: 0
 ---
-This is my personal website and blog where I post guides from things ranging from life lessons to machine learning concepts that were initially hard for me to understand. 
+Hello. My name is Jad Zeineddine. This is my personal website and blog where I post guides from things ranging from life lessons to machine learning concepts that were initially hard for me to understand. 
 <br><br>
 Feel free to checkout out my posts and the about section. 
 <br><br>
