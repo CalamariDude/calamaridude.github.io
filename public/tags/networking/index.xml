@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>networking on calamaridude</title>
+    <link>https://calamaridude.github.io/tags/networking/</link>
+    <description>Recent content in networking on calamaridude</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Aug 2022 10:48:17 -0500</lastBuildDate><atom:link href="https://calamaridude.github.io/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oblivion Writeup</title>
+      <link>https://calamaridude.github.io/posts/oblivion-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:48:17 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/oblivion-writeup/</guid>
+      <description>from HackArmour #  Setup #  came with executable (exfiltration)
+hexedit and binwalk showed arm instruction set and a few words but nothing of use
+running it produces :
+Инструмент эксфильтрации Работающий... отправленная информация (1 байт)...[OK] ...(48 times TOTAL) отправленная информация (1 байт)...[OK] АдИос  which translates to:
+exfiltration tool working.... information sent (1 Byte)..[OK] ...(48 times Total) information sent (1 Byte)..[OK] adios  Lets get going #  I pcap&amp;rsquo;d networking to see what packets were being sent with</description>
+    </item>
+    
+  </channel>
+</rss>

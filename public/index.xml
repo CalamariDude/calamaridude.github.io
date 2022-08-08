@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>calamaridude</title>
+    <link>https://calamaridude.github.io/</link>
+    <description>Recent content on calamaridude</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Aug 2022 10:55:18 -0500</lastBuildDate><atom:link href="https://calamaridude.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Passchecker Writeup</title>
+      <link>https://calamaridude.github.io/posts/passchecker-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:55:18 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/passchecker-writeup/</guid>
+      <description>from vsCTF #  We were given passchecker2000.py
+def validate(password: str) -&amp;gt; bool: if len(password) != 49: return False key = [&#39;vs&#39;.join(str(randint(7, 9)) for _ in range(ord(i))) + &#39;vs&#39; for i in password[::-2]] gate = [118, 140, 231, 176, 205, 480, 308, 872, 702, 820, 1034, 1176, 1339, 1232, 1605, 1792, 782, 810, 1197, 880, 924, 1694, 2185, 2208, 2775] if [randint(a, b[0]) for a, b in enumerate(zip(gate, key), 1) if len(b[1]) !</description>
+    </item>
+    
+    <item>
+      <title>Lechuck Writeup</title>
+      <link>https://calamaridude.github.io/posts/lechuck-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:51:22 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/lechuck-writeup/</guid>
+      <description>from HackArmour #  Lechuck
+Visiting https://challenges.hackrocks.com/lechuck, checked all storage, cookies, network requests - all clean
+guessed https://challenges.hackrocks.com/lechuck/flag - 404 are handled with a &amp;ldquo;Nothing to see here&amp;hellip;&amp;rdquo; - nothing worthwhile
+Read prompt and tried every word as an endpoint - all 404
+Dirbusted with gobuster:
+gobuster -fw -u challenges.hackrocks.com/lechuck/ -w ./common.txt dir | grep &amp;quot;(Status: 200&amp;quot;
+tried 5 different files , opened up two hints and hint #2 said use /user endpoint which yielded this message:</description>
+    </item>
+    
+    <item>
+      <title>Oblivion Writeup</title>
+      <link>https://calamaridude.github.io/posts/oblivion-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:48:17 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/oblivion-writeup/</guid>
+      <description>from HackArmour #  Setup #  came with executable (exfiltration)
+hexedit and binwalk showed arm instruction set and a few words but nothing of use
+running it produces :
+Инструмент эксфильтрации Работающий... отправленная информация (1 байт)...[OK] ...(48 times TOTAL) отправленная информация (1 байт)...[OK] АдИос  which translates to:
+exfiltration tool working.... information sent (1 Byte)..[OK] ...(48 times Total) information sent (1 Byte)..[OK] adios  Lets get going #  I pcap&amp;rsquo;d networking to see what packets were being sent with</description>
+    </item>
+    
+    <item>
+      <title>Huge Writeup</title>
+      <link>https://calamaridude.github.io/posts/huge-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:44:28 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/huge-writeup/</guid>
+      <description>from imaginaryCTF #  Setup #  Challenge consists of a challenge file and an output file Output file includes RSA values c (cipher text), n (modulus), and e (exponent) In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:
+(c^d)modn
+n and c are given but we don&amp;rsquo;t know d
+d can be found by solving this equation:
+de=1mod(lambda(n))</description>
+    </item>
+    
+    <item>
+      <title> Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)</title>
+      <link>https://calamaridude.github.io/posts/mlevsma/</link>
+      <pubDate>Wed, 05 Aug 2020 11:37:19 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/mlevsma/</guid>
+      <description>The following
+$$\int_{a}^{b} x^2 dx$$
+Is an integral
+Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP) #  If you&amp;rsquo;re like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn&amp;rsquo;t quite understand what the fuss was about. Why are we using &amp;ldquo;Log&amp;rdquo; and &amp;ldquo;Likelihood&amp;rdquo; and why does &amp;ldquo;Aposterior&amp;rdquo; sound so foreign. I&amp;rsquo;ve made a short blog post to help those out that, like me, didn&amp;rsquo;t quite get it the first time.</description>
+    </item>
+    
+  </channel>
+</rss>

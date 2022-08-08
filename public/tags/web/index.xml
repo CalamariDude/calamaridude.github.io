@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on calamaridude</title>
+    <link>https://calamaridude.github.io/tags/web/</link>
+    <description>Recent content in web on calamaridude</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Aug 2022 10:51:22 -0500</lastBuildDate><atom:link href="https://calamaridude.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lechuck Writeup</title>
+      <link>https://calamaridude.github.io/posts/lechuck-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:51:22 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/lechuck-writeup/</guid>
+      <description>from HackArmour #  Lechuck
+Visiting https://challenges.hackrocks.com/lechuck, checked all storage, cookies, network requests - all clean
+guessed https://challenges.hackrocks.com/lechuck/flag - 404 are handled with a &amp;ldquo;Nothing to see here&amp;hellip;&amp;rdquo; - nothing worthwhile
+Read prompt and tried every word as an endpoint - all 404
+Dirbusted with gobuster:
+gobuster -fw -u challenges.hackrocks.com/lechuck/ -w ./common.txt dir | grep &amp;quot;(Status: 200&amp;quot;
+tried 5 different files , opened up two hints and hint #2 said use /user endpoint which yielded this message:</description>
+    </item>
+    
+  </channel>
+</rss>

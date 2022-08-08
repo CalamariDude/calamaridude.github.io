@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The following
+$$\int_{a}^{b} x^2 dx$$
+Is an integral
+Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP) #  If you&rsquo;re like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn&rsquo;t quite understand what the fuss was about. Why are we using &ldquo;Log&rdquo; and &ldquo;Likelihood&rdquo; and why does &ldquo;Aposterior&rdquo; sound so foreign. I&rsquo;ve made a short blog post to help those out that, like me, didn&rsquo;t quite get it the first time.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content=" Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)" />
+<meta property="og:description" content="The following
+$$\int_{a}^{b} x^2 dx$$
+Is an integral
+Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP) #  If you&rsquo;re like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn&rsquo;t quite understand what the fuss was about. Why are we using &ldquo;Log&rdquo; and &ldquo;Likelihood&rdquo; and why does &ldquo;Aposterior&rdquo; sound so foreign. I&rsquo;ve made a short blog post to help those out that, like me, didn&rsquo;t quite get it the first time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://calamaridude.github.io/posts/mlevsma/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-05T11:37:19-05:00" />
+<meta property="article:modified_time" content="2020-08-05T11:37:19-05:00" />
+
+<title> Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP) | calamaridude</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95e112b52c596e223ec4b29593c433ff0801e49f4893e3b9d2e2727967803aea.js" integrity="sha256-leEStSxZbiI&#43;xLKVk8Qz/wgB5J9Ik&#43;O50uJyeWeAOuo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>calamaridude</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong> Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-maximum-likelihood">What is a Maximum Likelihood?</a>
+      <ul>
+        <li><a href="#coin-flip-example">Coin Flip Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-about-maximum-aposterior">What about Maximum Aposterior?</a></li>
+    <li><a href="#math-time">Math time</a>
+      <ul>
+        <li><a href="#maximum-likelihood-estimator">Maximum Likelihood Estimator</a></li>
+        <li><a href="#maximium-aposterior">Maximium Aposterior</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/mlevsma/"> Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)</a>
+  </h1>
+  
+  <h5>August 5, 2020</h5>
+
+
+
+  
+
+  
+
+
+
+<p>The following</p>
+<p>$$\int_{a}^{b} x^2 dx$$</p>
+<p>Is an integral</p>
+<h1 id="maximum-log-likelihood-mle-vs-maximum-aposterior-map">
+  Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)
+  <a class="anchor" href="#maximum-log-likelihood-mle-vs-maximum-aposterior-map">#</a>
+</h1>
+<p>If you&rsquo;re like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn&rsquo;t quite understand what the fuss was about. Why are we using &ldquo;Log&rdquo; and &ldquo;Likelihood&rdquo; and why does &ldquo;Aposterior&rdquo; sound so foreign. I&rsquo;ve made a short blog post to help those out that, like me, didn&rsquo;t quite get it the first time.</p>
+<h2 id="what-is-a-maximum-likelihood">
+  What is a Maximum Likelihood?
+  <a class="anchor" href="#what-is-a-maximum-likelihood">#</a>
+</h2>
+<p>The fundamental idea you have to understand about Maximum Likelihood is that it tries to ask the question, what is the best &ldquo;model&rdquo; or &ldquo;estimate&rdquo; that we can give <!-- raw HTML omitted -->just<!-- raw HTML omitted --> by looking at the data we have collected. It&rsquo;s actually really simple when we look at an example.</p>
+<h3 id="coin-flip-example">
+  Coin Flip Example
+  <a class="anchor" href="#coin-flip-example">#</a>
+</h3>
+<p>We want to get the probability of this coin landing on heads. We flip it 10 times to determine this coin&rsquo;s probability of landing heads. Let&rsquo;s say we get 6 heads and 4 tails. Maximum Likelihood says the probability of getting heads is $$P(X=Heads) = 6/10=.6$$. Based on our data, and no prior belief of the coin&rsquo;s chances, Maximum Likelihood tries to predict the probability. We will go over the math in a bit.</p>
+<h2 id="what-about-maximum-aposterior">
+  What about Maximum Aposterior?
+  <a class="anchor" href="#what-about-maximum-aposterior">#</a>
+</h2>
+<p>Maximum Aposterior (MAP) takes a bayesian approach to this (aka using prior knowledge to help get a more accurate model) which can be particularly useful if you don&rsquo;t have too much data to let the <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law of Large Numbers</a> do its job. Now when you flip a fair coin, you should expect to see that you get about 5 heads in 10 flips. However, in our experiment, we got 6 heads in 10 flips. Based on our experience, coins typically give a 50/50 fair chance, so we can incorporate this into our model to improve its accuracy with low data. With a Maximum Aposterior estimate, we use both our data and our belief to make the model. Since our &ldquo;Prior&rdquo; is $$P(X=Heads)=.5$$ and our actual experiment yielded $$P(X=Heads)=.6$$, our Maximum Aposterior should yield somewhere between $$.5$$ and $$.6$$ probabiliy. Now I know this is vague, but with baysian probability the exact probability estimate will be determined by how much we believe in our prior vs our data. If we think we are super sure that a coin has .5 probability because its a really special coin made only for NFL coin flips, then we may weigh our prior to be harder to change, meaning our MAP estimator will output something very close to $$.5$$ unless there is overwhelming evidence pulling it elsewhere.</p>
+<h2 id="math-time">
+  Math time
+  <a class="anchor" href="#math-time">#</a>
+</h2>
+<h3 id="maximum-likelihood-estimator">
+  Maximum Likelihood Estimator
+  <a class="anchor" href="#maximum-likelihood-estimator">#</a>
+</h3>
+<p>Now from the coin flip example, it seems like the way you determine the maximum liklihood is just by getting the simple probability. This just so happens to be the case when we are getting the maximum liklihood of a Univariate <!-- raw HTML omitted -->Gaussian Distribution<!-- raw HTML omitted -->. The maximum liklihood of a some data tries to estimate the true parameters of the population that the data came from. In our instance, we assume outcomes of the coin flip correspond to sum <!-- raw HTML omitted -->normal<!-- raw HTML omitted --> distribution. With this assumption, we will work out why the MLE of a coin flip data is just the mean of our data.
+<!-- raw HTML omitted --><!-- raw HTML omitted -->
+With our coin example, we will first make it more formal:</p>
+<p>Using this, we can write the data as $$X=(x_1,\dots,x_n)$$ where:</p>
+<p>$$
+x_i = \left{
+\begin{array}{ll}
+1 &amp; \quad \text{if Heads} \
+0 &amp; \quad \text{if Tails}
+\end{array}
+\right.
+$$</p>
+<p>Now let&rsquo;s define the MLE:</p>
+<p>$$\theta_{MLE} = \max_{\theta \epsilon \Theta}P(X| \theta)$$</p>
+<p>Okay so $$P(X ⎮ \theta)$$, what does it mean:</p>
+<p>$$P(X|\theta) =P(x_1,\dots,x_n | \theta) = \prod_{i=1}^nP(x_i = x_i | \theta)$$</p>
+<p>Putting it together, this is saying we need to pick parameters $$\theta$$ that maximizes the probability that each data point came from the probability distribution we are estimating the data points to come from. In our coin flip example, this means we need to pick a value that we can say, for a Bernoulli case of 10 coin flips where 6 outcomes are heads, what would be the average value we expect the next coin flip to be based on the previous 10 flips. This value works out to .6, and here&rsquo;s how we determine that:</p>
+<p>Assume the coin flips $$X$$ comes from a normal distribution, $$X \sim N(\mu, \sigma^2)$$, so that means</p>
+<p>$$P(x|\theta) = \frac{1}{\sqrt(2\pi\sigma^2)}\exp(-\frac{1}{2\sigma^2}(x-\theta)^2)$$</p>
+<p>Note that $$\theta$$ in this example means the $$\mu$$ that we are estimating, but we will continue to use $$\theta$$ for formality.</p>
+<p>So essentially we want to maximize this probability term for every X by choosing a $$\theta$$ that maximizes it. But in math, minimizing a product of probabilities is hard, because taking the derivative of a huge product is quite ugly. We will use a trick by instead taking the <strong>log</strong> of the function. Using a log, we can split up the function and use the Log Product Rule to make this problem look a little easier:</p>
+<p>$$\log(P(X|\theta)) = -\frac{n}{2}\log(2\pi\sigma^2)-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2$$</p>
+<p>Please refer to the <a href="https://mathinsight.org/logarithm_basics">Log Rules</a> for how we got to this. Its also important to note that we can use log because log(x) is a <em>monotonically</em> increasing function and maximizing $$P(X)$$ is the <em>same</em> as maximizing $$\log(P(X))$$. Now once we have this, we are ready to differentiate and set equal to 0 in order to find our <a href="https://www.cliffsnotes.com/study-guides/calculus/calculus/applications-of-the-derivative/critical-points">critical points</a>:</p>
+<p>$$0 = \frac{d}{d\theta}\log(P(X|\theta) = \frac{1}{2\sigma^2}\sum2(x_i-\theta) = \frac{1}{\sigma^2}(\sum{}x_i-n\theta) = 0$$</p>
+<p>$$\Rightarrow\frac{1}{n}\sum_{i=1}^nx_i = \theta_{MLE} = \bar{x}$$</p>
+<p>That&rsquo;s crazy how this all simplifies down to $$\theta_{MLE} = \bar{x}$$, which means maximizing our likelihood is just choosing the sample mean. BLows your MIND right?</p>
+<p>OK. Maybe not, but if that doesn&rsquo;t the MAP math will.</p>
+<p><strong>Aside</strong>: Now sometimes people will call the likelihood as the log likelihood, thats just because we maximize that instead, but its really doing the same thing, so most people use the likelihood and log likelihood synonymously.</p>
+<h3 id="maximium-aposterior">
+  Maximium Aposterior
+  <a class="anchor" href="#maximium-aposterior">#</a>
+</h3>
+<p>Now up until this point, we were pretty vague about what a prior meant, but let&rsquo;s make it absolutely clear what we mean by a prior. The prior refers to the $$P(A)$$ term in <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes' Theorem</a>.</p>
+<p>$$P(A|B) = \frac{P(B|A)P(A)}{P(B)}$$</p>
+<p>The top term is basically the maximim likelihood times a prior, this is the fundamental difference between the two, and you will see why this makes a difference as we work through the equations. So let&rsquo;s first define the the Maximum Aposterior.</p>
+<p>$$\theta_{MAP} = \max_{\theta \epsilon \Theta}P(\theta | X)$$</p>
+<p>Compare this function to the MLE objective function. What looks different?</p>
+<p>If you noticed, we are maximizing $$P(\theta⎮X)$$ rather than $$P(X⎮\theta)$$. This essentially is saying we want to maxmize the posterior distribution in $\theta$. This fancy mumbo jumbo can be broken down to someting understandable. &ldquo;Post&rdquo; means after and &ldquo;erior&rdquo; refers to the the prior, so we want to maximize the probability of our after-prior distribution, or distribution we have after a prior knowledge of thinking its a fair coin. So what this objective function really is saying is:</p>
+<p>$$\theta_{MAP} = \max_{\theta \epsilon \Theta}P(X | \theta)P(\theta)$$</p>
+<p>which if you notice, comes from the numerator of Bayes rule. We can throw out the denominator of Bayes rule because maximizing the top is also maximizing the whole fraction.</p>
+<p>Okay, let&rsquo;s get back to the math. In this problem, we also use the log to maximize so we can deal with each of those P terms separately using the log product rule. This will make our new objective function look like:</p>
+<p>$$\theta_{MAP} = \max_{\theta \epsilon \Theta}\log(P(X | \theta)) + \log(P(\theta))$$</p>
+<p>Let&rsquo;s just differentiate and set these bad boys equal to zero to maximize:</p>
+<p>$$0 = \frac{d}{d\theta}(\log(P(X|\theta)) + \log(P(\theta)))$$</p>
+<p>We already have the derivate of the first term since we already did it in MLE. It comes out to</p>
+<p>$$\frac{d}{d\theta}\log(P(X|\theta)) = \frac{1}{\sigma^2}(\sum{}x_i-n\theta)$$</p>
+<p>Now we just have to take the derivative of the second term.</p>
+<p>$$\frac{d}{d\theta}\log(P(\theta))$$</p>
+<p>In order to differentiate this we need to define it:</p>
+<p>$$P(\theta) = \frac{1}{\sqrt(2\pi\sigma^2)}\exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$$</p>
+<p>And now we take the log and differentiate this:</p>
+<p>$$\frac{d}{d\theta}\log(P(\theta)) =\frac{d}{d\theta}(-\frac{1}{2}\log(2\pi) - \frac{1}{2}(\theta-\mu)^2)$$</p>
+<p>$$= \theta-\mu$$</p>
+<p>So now putting these together, we have</p>
+<p>$$\frac{d}{d\theta}(\log(P(X|\theta)) + \log(P(\theta)))= 0$$</p>
+<p>$$\Rightarrow 0 = \frac{1}{\sigma^2}(\sum{}x_i-n\theta) + \mu + \theta$$</p>
+<p>We rearrange this to get:</p>
+<p>$$\Rightarrow \sum_{i=1}^n\frac{x_i}{\sigma^2} + \mu = \theta(\frac{n}{\sigma^2} + 1)$$</p>
+<p>$$\Rightarrow\theta_{MAP} = \frac{n}{n+\sigma^2}\bar{x} + \frac{\sigma^2}{n+\sigma^2}\mu$$</p>
+<p>I skipped some algebra, so go back and work out the last few steps yourself. But I wanted to get to the intuition behind this result.</p>
+<p>As you can see, the left side of this equation is the sample mean, and the right side is the prior mean. When the n is small, or you only flip the coin a few times, the term on the right will dominate more. However, as $$n\rightarrow\infty$$, the value of $$\theta_{MAP}$$ is mainly composed of the left term, as the right term goes to 0. Meaning, when we flip the coin a lot, and it keeps landing 6/10 times heads, we stop believing it was a fair sided NFL coin and more like a rigged unfair coin. So as $$n\rightarrow\infty$$, MAP looks a lot like $$\bar{x}$$, which is the MLE.</p>
+<h2 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h2>
+<p>Whether you use MLE or MAP is up to you, if you think you the data is what you should base your estimates on and nothing else, MLE is the way to go. If you think you know something that will help the problem, especially if there isn&rsquo;t enough data or the data isn&rsquo;t that good, you might want to use a Bayesian model like MAP.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-maximum-likelihood">What is a Maximum Likelihood?</a>
+      <ul>
+        <li><a href="#coin-flip-example">Coin Flip Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-about-maximum-aposterior">What about Maximum Aposterior?</a></li>
+    <li><a href="#math-time">Math time</a>
+      <ul>
+        <li><a href="#maximum-likelihood-estimator">Maximum Likelihood Estimator</a></li>
+        <li><a href="#maximium-aposterior">Maximium Aposterior</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

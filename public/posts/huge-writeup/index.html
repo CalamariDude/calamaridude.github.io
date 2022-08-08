@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="from imaginaryCTF #  Setup #  Challenge consists of a challenge file and an output file Output file includes RSA values c (cipher text), n (modulus), and e (exponent) In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:
+(c^d)modn
+n and c are given but we don&rsquo;t know d
+d can be found by solving this equation:
+de=1mod(lambda(n))">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Huge Writeup" />
+<meta property="og:description" content="from imaginaryCTF #  Setup #  Challenge consists of a challenge file and an output file Output file includes RSA values c (cipher text), n (modulus), and e (exponent) In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:
+(c^d)modn
+n and c are given but we don&rsquo;t know d
+d can be found by solving this equation:
+de=1mod(lambda(n))" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://calamaridude.github.io/posts/huge-writeup/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-08T10:44:28-05:00" />
+<meta property="article:modified_time" content="2022-08-08T10:44:28-05:00" />
+
+<title>Huge Writeup | calamaridude</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95e112b52c596e223ec4b29593c433ff0801e49f4893e3b9d2e2727967803aea.js" integrity="sha256-leEStSxZbiI&#43;xLKVk8Qz/wgB5J9Ik&#43;O50uJyeWeAOuo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>calamaridude</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Huge Writeup</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#from-imaginaryctf">from imaginaryCTF</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/huge-writeup/">Huge Writeup</a>
+  </h1>
+  
+  <h5>August 8, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/crypto/">crypto</a>
+  </div>
+  
+
+
+
+<h2 id="from-imaginaryctf">
+  from imaginaryCTF
+  <a class="anchor" href="#from-imaginaryctf">#</a>
+</h2>
+<h2 id="setup">
+  Setup
+  <a class="anchor" href="#setup">#</a>
+</h2>
+<p>Challenge consists of a challenge file and an output file
+Output file includes <a href="https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29">RSA</a> values c (cipher text), n (modulus), and e (exponent)
+In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:</p>
+<p><code>(c^d)modn</code></p>
+<p><code>n</code> and <code>c</code> are given but we don&rsquo;t know <code>d</code></p>
+<p><code>d</code> can be found by solving this equation:</p>
+<p><code>de=1mod(lambda(n))</code></p>
+<p><code>e</code> is known, lambda(n) is not.</p>
+<p>we can find this value by using an online <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">euler&rsquo;s totient</a> calculator.</p>
+<p>I used this one : <a href="https://comnuan.com/cmnn02/cmnn02005/">https://comnuan.com/cmnn02/cmnn02005/</a></p>
+<p>I didn&rsquo;t have the time to figure out how to calculate numbers this large without factor.db type websites</p>
+<p>After we have this number, we can plug it into the equation and solve. I coded a fast solution below.</p>
+<h2 id="code">
+  Code
+  <a class="anchor" href="#code">#</a>
+</h2>
+<pre><code>from Crypto.Util.number import long_to_bytes
+
+n = 257827703087398016057355158654193468564980243813004452658087616586210487667215030370871398983230710387803731676134007721137156696714627083072326445637415561591372586919746606752675050732692230618293581354674196658443898625965651230501721590806987488038754683843111434873697465691139129703835890867256688046172118591
+c = 194667317703687479298989188290833629421904543231503224641743768867721632949682167895699280370759100055314992068135383846690184090232092994595979623784341194946153538127175310278245722299688212621004144260665233469561373125699948009903943019071999887294005117156960295183926108287198987970959145603429337056005819069
+e = 65537
+lambda_n = 238940154401626938037848370480225183045581769211725031481021020007970362783588965693807273855047475931562553093129263532876569906106451113480591159727935347588408235764799039034556484596551260176507450085252133677350349066373844187940165049949179091946213517645837708200090091217192271487206162432000000000000000000
+
+x = lambda_n
+# iterative method to find d
+# xi = lambda_n*i ... i from 1 to inf
+# if xi+1 is divisible by e
+while True:
+    if (x+1)%e == 0:
+        d= (x+1)//e # by luck we can round down if we add 1 to x
+        break
+    x += lambda_n
+
+# this solves the first stated decryption equation and converts the result to string 
+# first by converting the integer to bytes then to string with decode()
+print(long_to_bytes(pow(c,d,n)).decode())
+
+output: 
+ictf{sm4ll_pr1mes_are_n0_n0_9b129443}
+</code></pre>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#from-imaginaryctf">from imaginaryCTF</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

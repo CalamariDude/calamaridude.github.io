@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Posts" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://calamaridude.github.io/posts/" />
+
+<title>Posts | calamaridude</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95e112b52c596e223ec4b29593c433ff0801e49f4893e3b9d2e2727967803aea.js" integrity="sha256-leEStSxZbiI&#43;xLKVk8Qz/wgB5J9Ik&#43;O50uJyeWeAOuo=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://calamaridude.github.io/posts/index.xml" title="calamaridude" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>calamaridude</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Posts</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/crypto/">crypto</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/web/">web</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/networking/">networking</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/passchecker-writeup/">Passchecker Writeup</a>
+    </h2>
+    
+  <h5>August 8, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/crypto/">crypto</a>
+  </div>
+  
+
+
+
+
+    <p>from vsCTF #  We were given passchecker2000.py
+def validate(password: str) -&gt; bool: if len(password) != 49: return False key = ['vs'.join(str(randint(7, 9)) for _ in range(ord(i))) + 'vs' for i in password[::-2]] gate = [118, 140, 231, 176, 205, 480, 308, 872, 702, 820, 1034, 1176, 1339, 1232, 1605, 1792, 782, 810, 1197, 880, 924, 1694, 2185, 2208, 2775] if [randint(a, b[0]) for a, b in enumerate(zip(gate, key), 1) if len(b[1]) !
+        <a href="/posts/passchecker-writeup/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/lechuck-writeup/">Lechuck Writeup</a>
+    </h2>
+    
+  <h5>August 8, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/web/">web</a>
+  </div>
+  
+
+
+
+
+    <p>from HackArmour #  Lechuck
+Visiting https://challenges.hackrocks.com/lechuck, checked all storage, cookies, network requests - all clean
+guessed https://challenges.hackrocks.com/lechuck/flag - 404 are handled with a &ldquo;Nothing to see here&hellip;&rdquo; - nothing worthwhile
+Read prompt and tried every word as an endpoint - all 404
+Dirbusted with gobuster:
+gobuster -fw -u challenges.hackrocks.com/lechuck/ -w ./common.txt dir | grep &quot;(Status: 200&quot;
+tried 5 different files , opened up two hints and hint #2 said use /user endpoint which yielded this message:
+        <a href="/posts/lechuck-writeup/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/oblivion-writeup/">Oblivion Writeup</a>
+    </h2>
+    
+  <h5>August 8, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/networking/">networking</a>
+  </div>
+  
+
+
+
+
+    <p>from HackArmour #  Setup #  came with executable (exfiltration)
+hexedit and binwalk showed arm instruction set and a few words but nothing of use
+running it produces :
+Инструмент эксфильтрации Работающий... отправленная информация (1 байт)...[OK] ...(48 times TOTAL) отправленная информация (1 байт)...[OK] АдИос  which translates to:
+exfiltration tool working.... information sent (1 Byte)..[OK] ...(48 times Total) information sent (1 Byte)..[OK] adios  Lets get going #  I pcap&rsquo;d networking to see what packets were being sent with
+        <a href="/posts/oblivion-writeup/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/huge-writeup/">Huge Writeup</a>
+    </h2>
+    
+  <h5>August 8, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/crypto/">crypto</a>
+  </div>
+  
+
+
+
+
+    <p>from imaginaryCTF #  Setup #  Challenge consists of a challenge file and an output file Output file includes RSA values c (cipher text), n (modulus), and e (exponent) In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:
+(c^d)modn
+n and c are given but we don&rsquo;t know d
+d can be found by solving this equation:
+de=1mod(lambda(n))
+        <a href="/posts/huge-writeup/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/mlevsma/"> Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP)</a>
+    </h2>
+    
+  <h5>August 5, 2020</h5>
+
+
+
+  
+
+  
+
+
+
+
+    <p>The following
+$$\int_{a}^{b} x^2 dx$$
+Is an integral
+Maximum Log Likelihood (MLE) vs Maximum Aposterior (MAP) #  If you&rsquo;re like me, this whole maximum log likihood vs bayesian ordeal mumbo jumbo has made you dizzy. The first time I learned this, I didn&rsquo;t quite understand what the fuss was about. Why are we using &ldquo;Log&rdquo; and &ldquo;Likelihood&rdquo; and why does &ldquo;Aposterior&rdquo; sound so foreign. I&rsquo;ve made a short blog post to help those out that, like me, didn&rsquo;t quite get it the first time.
+        <a href="/posts/mlevsma/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/crypto/">crypto</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/web/">web</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/networking/">networking</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>crypto on calamaridude</title>
+    <link>https://calamaridude.github.io/tags/crypto/</link>
+    <description>Recent content in crypto on calamaridude</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Aug 2022 10:55:18 -0500</lastBuildDate><atom:link href="https://calamaridude.github.io/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Passchecker Writeup</title>
+      <link>https://calamaridude.github.io/posts/passchecker-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:55:18 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/passchecker-writeup/</guid>
+      <description>from vsCTF #  We were given passchecker2000.py
+def validate(password: str) -&amp;gt; bool: if len(password) != 49: return False key = [&#39;vs&#39;.join(str(randint(7, 9)) for _ in range(ord(i))) + &#39;vs&#39; for i in password[::-2]] gate = [118, 140, 231, 176, 205, 480, 308, 872, 702, 820, 1034, 1176, 1339, 1232, 1605, 1792, 782, 810, 1197, 880, 924, 1694, 2185, 2208, 2775] if [randint(a, b[0]) for a, b in enumerate(zip(gate, key), 1) if len(b[1]) !</description>
+    </item>
+    
+    <item>
+      <title>Huge Writeup</title>
+      <link>https://calamaridude.github.io/posts/huge-writeup/</link>
+      <pubDate>Mon, 08 Aug 2022 10:44:28 -0500</pubDate>
+      
+      <guid>https://calamaridude.github.io/posts/huge-writeup/</guid>
+      <description>from imaginaryCTF #  Setup #  Challenge consists of a challenge file and an output file Output file includes RSA values c (cipher text), n (modulus), and e (exponent) In order to decrypt a file encrypted with an RSA encryption, according to wikipedia, one must solve the following equation:
+(c^d)modn
+n and c are given but we don&amp;rsquo;t know d
+d can be found by solving this equation:
+de=1mod(lambda(n))</description>
+    </item>
+    
+  </channel>
+</rss>

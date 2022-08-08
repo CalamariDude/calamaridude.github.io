@@ -1,0 +1,5 @@
+baseURL = 'https://calamaridude.github.io'
+languageCode = 'en-us'
+title = 'calamaridude'
+themesDir = "themes"
+theme = "hugo-book"
