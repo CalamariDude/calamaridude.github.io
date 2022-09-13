@@ -1,8 +1,6 @@
 ---
-title: "Lechuck Writeup"
-date: 2022-08-08T10:51:22-05:00
-draft: false
-tags: web
+title:  "Lechuck Writeup"
+date:   2022-08-7 17:22:18 -0400
 ---
 ## from HackArmour
 

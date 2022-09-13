@@ -1,8 +1,7 @@
 ---
-title: "Huge Writeup"
-date: 2022-08-08T10:44:28-05:00
-draft: false
-tags: crypto
+layout: post
+title:  "Huge Writeup"
+date:   2022-08-08 17:22:18 -0400
 ---
 
 ## from imaginaryCTF

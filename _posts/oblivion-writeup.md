@@ -1,8 +1,6 @@
 ---
-title: "Oblivion Writeup"
-date: 2022-08-08T10:48:17-05:00
-draft: false
-tags: networking
+title:  "Oblivion Writeup"
+date:   2022-08-08 17:22:18 -0400
 ---
 
 ## from HackArmour

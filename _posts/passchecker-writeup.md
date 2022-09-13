@@ -1,8 +1,6 @@
 ---
-title: "Passchecker Writeup"
-date: 2022-08-08T10:55:18-05:00
-draft: false
-tags: crypto
+title:  "Passchecker Writeup"
+date:   2022-08-08 17:22:18 -0400
 ---
 ## from vsCTF
 
